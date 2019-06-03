@@ -30,12 +30,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "find",
 					"pathName": "pages/find/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "type",
+					"pathName": "pages/typeDetail/main",
 					"scene": null
 				}
 			]
