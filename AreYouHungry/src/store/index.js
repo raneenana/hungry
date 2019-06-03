@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Longger from 'vuex/dist/logger'
+import Index from './module/index'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  modules:{
-
+  modules: {
+    Index
   },
-  plugins:[Longger()]
+  plugins: [Longger()]
 })
