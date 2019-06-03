@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Longger from 'vuex/dist/logger'
-import Index from './module/index'
-import Find from './module/find'
+import Logger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
+import Find from './module/find'
+import index from './module/index'
 
 export default new Vuex.Store({
   modules: {
-    Index,
-    Find
+    Find,
+    index
   },
-  plugins: [Longger()]
+  plugins: [Logger()]
 })

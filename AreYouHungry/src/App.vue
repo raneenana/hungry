@@ -40,6 +40,10 @@ body,html {
   padding: 0;
   font-size: 12px;
 }
+page{
+  width: 100%;
+  height: 100%;
+}
 /* this rule will be remove */
 * {
   transition: width 2s;

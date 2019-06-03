@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/order/main",
     "pages/find/main",
+    "pages/order/main",
     "pages/my/main"
   ],
   "window": {
@@ -18,7 +18,7 @@
     "borderStyle": "white",
 
     "list": [{
-      "text": "首页",
+      "text": "外卖",
       "pagePath": "pages/index/main",
       "iconPath": "static/tabs/home.png",
       "selectedIconPath": "static/tabs/home-active.png"
