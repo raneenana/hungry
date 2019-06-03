@@ -19,7 +19,6 @@ const actions = {
   },
   async getShopList ({ commit }) {
     let data = await getShopList()
-    console.log(data)
     commit('updataState',{shopList:data})
   }
 }

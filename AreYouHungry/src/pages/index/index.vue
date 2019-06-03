@@ -17,7 +17,7 @@
     <div class="shoplist"> 
         <h5 class="shoplist_title">附近商家</h5>
         <ul>
-          <li class="shop_li"  v-for="(item,index) in shopList">
+          <li class="shop_li"  v-for="(item,index) in shopList" :key='index'>
             <div class="pic">
               <image :src="picSrc+item.image_path" />
             </div>
@@ -79,7 +79,6 @@ export default {
     await this.getShopList()
     this.first = this.foodList.slice(0,8);
     this.seconed = this.foodList.slice(8);
-    console.log(this.shopList,'shopList')
   }
 }
 </script>
