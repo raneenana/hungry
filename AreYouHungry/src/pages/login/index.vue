@@ -1,6 +1,6 @@
 <template>
-  <div>
-
+  <div class="wrap">
+    登录
   </div>
 </template>
 
@@ -19,5 +19,8 @@ export default {
 </script>
 
 <style scoped>
-
+.wrap{
+  width: 100%;
+  height: 100%;
+}
 </style>
