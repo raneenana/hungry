@@ -13,9 +13,7 @@ const mutations = {
 }
 const actions = {
   async getHistory ({ commit }, payload) {
-    // console.log('...payload', payload)
     let data = await find(payload)
-    // console.log('data...', data)
     commit('CHANGE_LIST', {tit: payload, data: data})
   }
 }

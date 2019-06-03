@@ -9,7 +9,7 @@
       <ul>
         <li v-for="(item,index) in historyList" :key="index">
           <span>{{item}}</span>
-          <b>X</b>
+          <b @click="del(index)">X</b>
         </li>
       </ul>
       <div v-if="flag" class="section">
@@ -44,6 +44,7 @@ export default {
   methods: {
     ...mapActions({
       history: 'Find/getHistory'
+      // dele: 'Find/delete',
     }),
     submit () {
       if (this.val) {
@@ -55,6 +56,9 @@ export default {
       if (!this.val) {
         this.flag = false
       }
+    },
+    del (key) {
+      this.historyList.splice(key, 1)
     }
   }
 }
