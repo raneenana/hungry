@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/order/main",
     "pages/find/main",
+    "pages/order/main",
     "pages/my/main"
   ],
   "window": {
