@@ -1,5 +1,7 @@
 <template>
-  hahahahah发现
+  <div>
+    hahahahah发现
+  </div>
 </template>
 
 <script></script>

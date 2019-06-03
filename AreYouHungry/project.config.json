@@ -9,8 +9,8 @@
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "touristappid",
-	"projectname": "hungry",
+	"appid": "wx23f9054a15947295",
+	"projectname": "AreYouHungry",
 	"condition": {
 		"search": {
 			"current": -1,
