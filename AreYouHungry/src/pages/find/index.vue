@@ -11,7 +11,6 @@
           <span>{{item}}</span>
           <b>X</b>
         </li>
-
       </ul>
     </div>
   </div>
@@ -110,4 +109,5 @@ ul li {
 li span,b{
   padding: 0 15px;
 }
+
 </style>

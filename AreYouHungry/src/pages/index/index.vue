@@ -8,77 +8,77 @@
         </div>
       </swiper-item>
       <swiper-item class="info">
-          <div v-for="(item, index) in seconed" :index="index" :key="key">
-            <image :src="imgSrc+item.image_url" class="slide-image" mode="aspectFill"/>
-            <view class="text">{{item.title}}</view>
+        <div v-for="(item, index) in seconed" :index="index" :key="key">
+          <image :src="imgSrc+item.image_url" class="slide-image" mode="aspectFill"/>
+          <view class="text">{{item.title}}</view>
         </div>
       </swiper-item>
     </swiper>
     <div class="shoplist"> 
-        <h5 class="shoplist_title">附近商家</h5>
-        <ul>
-          <li class="shop_li"  v-for="(item,index) in shopList" :key='index'>
-            <div class="pic">
-              <image :src="picSrc+item.image_path" />
+      <h5 class="shoplist_title">附近商家</h5>
+      <ul>
+        <li class="shop_li"  v-for="(item,index) in shopList" :key='index'>
+          <div class="pic">
+            <image :src="picSrc+item.image_path" />
+          </div>
+          <div class="content">
+            <div class="content_title">
+              <p>
+                <span>品牌</span>
+                <span>{{item.name}}</span>
+              </p>  
+              <p>保 准 票</p>
             </div>
-            <div class="content">
-              <div class="content_title">
-                <p>
-                  <span>品牌</span>
-                  <span>{{item.name}}</span>
-                </p>  
-                <p>保 准 票</p>
+            <div class="sales_status">
+              <div>
+                <span class="star">★★★★★</span> 
+                <span class="grade">{{item.rating}}</span>
+                <span class="scale">月售{{item.recent_order_num}}单</span>
               </div>
-              <div class="sales_status">
-                <div>
-                  <span class="star">★★★★★</span> 
-                  <span class="grade">{{item.rating}}</span>
-                  <span class="scale">月售{{item.recent_order_num}}单</span>
-                </div>
-                <div class="tags">
-                  <span>蜂鸟专送</span>
-                  <span>准时达</span>
-                </div>
-              </div>
-              <div class="shop_item_info">
-                <div>￥{{item.float_minimum_order_amount}}起送 / {{item.piecewise_agent_fee&&item.piecewise_agent_fee.tips}}</div>
-                <div><span style="color:#999">{{item.distance}}</span> / <span style="color: #3190e8">{{item.order_lead_time}}</span></div>
+              <div class="tags">
+                <span>蜂鸟专送</span>
+                <span>准时达</span>
               </div>
             </div>
-          </li>
-        </ul>
-      </div>
+            <div class="shop_item_info">
+              <div>￥{{item.float_minimum_order_amount}}起送 / {{item.piecewise_agent_fee&&item.piecewise_agent_fee.tips}}</div>
+              <div><span style="color:#999">{{item.distance}}</span> / <span style="color: #3190e8">{{item.order_lead_time}}</span></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </view>
 </template>
 
 <script>
-import {mapActions,mapState} from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   data() {
     return {
-      imgSrc:'https://fuss10.elemecdn.com',
+      imgSrc: 'https://fuss10.elemecdn.com',
       picSrc: 'https://elm.cangdu.org/img/',
-      first:[],
-      seconed:[]
+      first: [],
+      seconed: []
     }
   },
   computed: {
     ...mapState({
-      foodList:state=>state.index.foodList,
+      foodList: state => state.index.foodList,
       shopList: state => state.index.shopList
     })
   },
   methods: {
     ...mapActions({
-      getFoodList:'index/getcateList',
-      getShopList:'index/getShopList'
+      getFoodList: 'index/getcateList',
+      getShopList: 'index/getShopList'
     })
   },
   async mounted() {
     await this.getFoodList()
     await this.getShopList()
-    this.first = this.foodList.slice(0,8);
-    this.seconed = this.foodList.slice(8);
+    this.first = this.foodList.slice(0,8)
+    this.seconed = this.foodList.slice(8)
   }
 }
 </script>
