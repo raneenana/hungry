@@ -31,14 +31,14 @@ export default {
 </script>
 
 <style>
-.container {
+body,html {
+  width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
+}
+*{
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
 }
 /* this rule will be remove */
 * {
