@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <div class="head">
-      <input type="text" v-model="val" placeholder="请输入商家或美食名称">
+      <input type="text" @input="changeVal($e)" v-model="val" placeholder="请输入商家或美食名称">
       <span @click="submit()">提交</span>
     </div>
     <div class="history">
@@ -11,8 +11,10 @@
           <span>{{item}}</span>
           <b>X</b>
         </li>
-
       </ul>
+      <div v-if="flag" class="section">
+        <p>{{this.dataList || flag ? '很抱歉！无搜索结果' : ''}}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -24,17 +26,19 @@ export default {
     return {
       flag: false,
       val: '',
-      historyList: []
+      historyList: [],
+      dataList: {}
     }
   },
   computed: {
     ...mapState({
-      list: state => state.Find.historyList
+      list: state => state.Find.historyList,
+      data: state => state.Find.findList
     })
   },
   created () {
     this.historyList = this.list
-    console.log(this.list)
+    this.dataList = this.data
   },
 
   methods: {
@@ -44,6 +48,12 @@ export default {
     submit () {
       if (this.val) {
         this.history(this.val)
+        this.flag = !this.flag
+      }
+    },
+    changeVal (e) {
+      if (!this.val) {
+        this.flag = false
       }
     }
   }
@@ -56,6 +66,8 @@ export default {
   background: #f5f5f5;
   overflow-y: scroll;
   font-size: 12px;
+  display: flex;
+  flex-direction: column;
 }
 .head {
   width: 100%;
@@ -67,8 +79,9 @@ export default {
 .head input {
   width: 260px;
   height: 36px;
+  padding-left: 10px;
   margin-top: 12px;
-  margin-left: 20px;
+  margin-left: 15px;
   margin-right: 5px;
   background: #f5f5f5;
   border-radius: 5px;
@@ -86,6 +99,8 @@ export default {
 }
 .history{
   width: 100%;
+  flex: 1;
+  position: relative;
 }
 .history .title{
   width: 100%;
@@ -109,5 +124,23 @@ ul li {
 }
 li span,b{
   padding: 0 15px;
+}
+.section {
+  width: 100%;
+  height: 100%;
+  /* flex: 1; */
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+.section p {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background: #fff;
+  margin-top: 5px;
 }
 </style>
