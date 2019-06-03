@@ -1,15 +1,16 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": false,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "wx23f9054a15947295",
+	"appid": "wx1ea5a893ac52c504",
 	"projectname": "AreYouHungry",
 	"condition": {
 		"search": {
