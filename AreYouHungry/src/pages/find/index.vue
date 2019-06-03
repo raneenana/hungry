@@ -1,5 +1,7 @@
 <template>
-  hahahahah发现
+  <div>
+    搜索
+  </div>
 </template>
 
 <script></script>
