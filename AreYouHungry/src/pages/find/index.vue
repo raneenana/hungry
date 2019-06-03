@@ -1,6 +1,6 @@
 <template>
   <div>
-    hahahahah发现
+    搜索
   </div>
 </template>
 
