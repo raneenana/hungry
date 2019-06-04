@@ -76,7 +76,7 @@ export default {
     }),
     goShopDetail (id) {
       wx.navigateTo({
-        url: '../shopDetail/main?id=' + id
+        url: '/pages/shopDetail/main?id=' + id
       })
     },
     goDetail (v) {

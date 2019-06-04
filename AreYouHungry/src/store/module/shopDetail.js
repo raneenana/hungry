@@ -20,9 +20,7 @@ const actions = {
   },
   // 获取食品列表
   async getMenuDetail ({ commit }, payload) {
-    console.log('payload', payload)
     let data = await getMenuDetail(payload)
-    console.log('menuDetail', data)
     commit('updataState', { menuDetail: data })
   }
 }

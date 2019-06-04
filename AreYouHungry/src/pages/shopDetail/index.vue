@@ -18,36 +18,47 @@
     </nav>
     <section>
       <div class="tab" ref="tabs">
-        <scroll-view scroll-y style="height:600px">
-          <li v-for='(item,index) in menuDetail' :key='index'>{{item.name}}</li>
+        <scroll-view scroll-y style="height:100%">
+          <li v-for='(item,index) in menuDetail' 
+              :class="index===currentIndex ? 'bg' : ''"
+              :key="index"
+              @click="selectMenu(index)"
+          >
+            {{item.name}}
+          </li>
         </scroll-view>
       </div>
       <div class="right">
-        <div class="block" v-for="(item,index) in menuDetail" :key="index">
-          <scroll-view scroll-y style="height:600px">
+        <scroll-view 
+          scroll-y 
+          style="height:100%"
+          :scroll-into-view="contentId"
+          scroll-with-animation="true"
+        >
+          <div class="block" v-for="(item,index) in menuDetail" :key="index" :id="'con_'+index">
             <h2>{{item.name}}<span>{{item.description}}</span></h2>
             <div class="food_info">
-              
-                <dl class="small" v-for="(v,i) in item.foods" :key="i">
-                  <dt>
-                    <image :src="picSrc+v.image_path" alt=''></image>
-                  </dt>
-                  <dd>
-                    <h4>{{v.name}}</h4>
-                    <p>包含：肌肉</p>
-                    <p>{{v.tips}} 好评率<b>{{v.satisfy_rate}}%</b></p>
-                    <div class="bot">
-                      <div>￥{{v.specfoods.price||v.specfoods[0].price}}</div>
-                      <div class="brit">
-                        <span>5份起售</span>
-                        <div class="cont" style="color:#fff">+</div>
-                      </div>
+              <dl class="small" v-for="(v,i) in item.foods" :key="i">
+                <dt>
+                  <image :src="picSrc+v.image_path" alt='' />
+                </dt>
+                <dd>
+                  <h4>{{v.name}}</h4>
+                  <p>包含：肌肉</p>
+                  <p>{{v.tips}} 好评率<b>{{v.satisfy_rate}}%</b></p>
+                  <div class="bot">
+                    <!-- <div>￥{{v.specfoods[0].price?v.specfoods[0].price:0}}</div> -->
+                    <div>￥20</div>
+                    <div class="brit">
+                      <span>5份起售</span>
+                      <div class="cont" style="color:#fff">+</div>
                     </div>
-                  </dd>
-                </dl>
+                  </div>
+                </dd>
+              </dl>
             </div>
-          </scroll-view>
-        </div>
+          </div>
+        </scroll-view>
       </div>
     </section>
     <footer>
@@ -61,7 +72,9 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      picSrc: 'https://elm.cangdu.org/img/'
+      picSrc: 'https://elm.cangdu.org/img/',
+      contentId: '', // scroll-into-view滚动到对应的id
+      currentIndex: 0
     }
   },
   computed: {
@@ -74,7 +87,11 @@ export default {
     ...mapActions({
       getShopDetail: 'shopDetail/getShopDetail',
       getMenuDetail: 'shopDetail/getMenuDetail'
-    })
+    }),
+    selectMenu (index) {
+      this.contentId = `con_${index}`
+      this.currentIndex = index
+    }
   },
   async mounted () {
     let id = this.$root.$mp.query.id
