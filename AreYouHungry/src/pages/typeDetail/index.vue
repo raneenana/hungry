@@ -42,7 +42,7 @@
 <script>
   import { mapActions, mapState } from 'vuex'
   export default {
-    data() {
+    data () {
       return {
         picSrc: 'https://elm.cangdu.org/img/'
       }
@@ -57,7 +57,7 @@
         getShopList: 'index/getShopList'
       })
     },
-    async mounted() {
+    async mounted () {
       let tit = this.$root.$mp.query.title
       wx.setNavigationBarTitle({
         title: tit
