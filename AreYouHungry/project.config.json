@@ -1,17 +1,25 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false
 	},
-	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "wx59963d867c9230cc",
+	"libVersion": "2.0.4",
+	"appid": "touristappid",
 	"projectname": "hungry",
+	"miniprogramRoot": "dist/wx/",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -26,7 +34,6 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
@@ -34,31 +41,15 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "我的",
-					"pathName": "pages/my/main",
-					"query": "",
-					"scene": null
-				},
-        {
-          "id": -1,
 					"name": "find",
 					"pathName": "pages/find/main",
-<<<<<<< HEAD
-          "scene": null
-        },
-				{
-					"id": -1,
-					"name": "登录",
-					"pathName": "pages/login/main",
-=======
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "type",
-					"pathName": "pages/typeDetail/main",
->>>>>>> zhangna
+					"name": "points",
+					"pathName": "pages/points/main",
 					"scene": null
 				}
 			]

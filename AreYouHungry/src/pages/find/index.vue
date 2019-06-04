@@ -17,7 +17,7 @@
         <div :class=" data.length ? 'main_list' : 'active_main'">
           <h4>商家</h4>
           <ul class="list">
-            <li v-for="(item,index) in data" :key="index">
+            <li v-for="(item,index) in data" @click="herfPage(item.id)" :key="index">
               <div class="left">
                 <img :src="'https://elm.cangdu.org/img/'+item.image_path" alt="">
               </div>
@@ -70,7 +70,7 @@ export default {
         await this.history(item)
         this.dataList = this.data
       }
-      this.flag = !this.flag
+      this.flag = true
     },
     changeVal (e) {
       if (!this.val) {
@@ -79,6 +79,12 @@ export default {
     },
     del (key) {
       this.historyList.splice(key, 1)
+    },
+    herfPage (id) {
+      console.log(id)
+      wx.navigateTo({
+        url: '/pages/index/main'
+      })
     }
   }
 }

@@ -5,7 +5,9 @@
     "pages/find/main",
     "pages/login/main",
     "pages/my/main",
-    "pages/typeDetail/main"
+    "pages/typeDetail/main",
+    "pages/points/main",
+    "pages/pointDetail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
