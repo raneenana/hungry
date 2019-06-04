@@ -1,11 +1,25 @@
+import { getCateList, getShopList } from '@/api/index'
 const state = {
-  list: [1, 2, 3, 4]
+  shopList: [],
+  foodList: []
 }
 const mutations = {
-
+  updataState (state, payload) {
+    for (var key in payload) {
+      state[key] = payload[key]
+    }
+  }
 }
-const actions = {
 
+const actions = {
+  async getcateList ({ commit }, payload) {
+    let data = await getCateList()
+    commit('updataState', { foodList: data })
+  },
+  async getShopList ({ commit }) {
+    let data = await getShopList()
+    commit('updataState', { shopList: data })
+  }
 }
 
 export default {
