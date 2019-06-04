@@ -17,7 +17,7 @@
     <div class="shoplist"> 
         <h5 class="shoplist_title">附近商家</h5>
         <ul>
-          <li class="shop_li"  v-for="(item,index) in shopList" :key='index'>
+          <li class="shop_li"  v-for="(item,index) in shopList" :key='index' @click="goDetail(item.id)">
             <div class="pic">
               <image :src="picSrc+item.image_path" />
             </div>
@@ -47,61 +47,66 @@
             </div>
           </li>
         </ul>
-      </div>
+      </div> 
   </view>
 </template>
 
 <script>
-import {mapActions,mapState} from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
-      imgSrc:'https://fuss10.elemecdn.com',
+      imgSrc: 'https://fuss10.elemecdn.com',
       picSrc: 'https://elm.cangdu.org/img/',
-      first:[],
-      seconed:[]
+      first: [],
+      seconed: []
     }
   },
   computed: {
     ...mapState({
-      foodList:state=>state.index.foodList,
+      foodList: state => state.index.foodList,
       shopList: state => state.index.shopList
     })
   },
   methods: {
     ...mapActions({
-      getFoodList:'index/getcateList',
-      getShopList:'index/getShopList'
-    })
+      getFoodList: 'index/getcateList',
+      getShopList: 'index/getShopList'
+    }),
+    goDetail (id) {
+      wx.navigateTo({
+        url: '../shopDetail/main?id=' + id
+      })
+    }
   },
-  async mounted() {
+  async mounted () {
     await this.getFoodList()
     await this.getShopList()
-    this.first = this.foodList.slice(0,8);
-    this.seconed = this.foodList.slice(8);
+    this.first = this.foodList.slice(0, 8)
+    this.seconed = this.foodList.slice(8)
   }
 }
 </script>
 
 <style scoped>
-.wrap{
+.wrap {
   width: 100%;
   height: 100%;
   background: #eee;
 }
-.lists{
+.lists {
   width: 100%;
   height: 200px;
   margin-bottom: 10px;
   background: #fff;
   border-bottom: 1px solid #ccc;
 }
-.info{
+.info {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
-.info>div{
+.info > div {
   width: 25%;
   display: flex;
   flex-direction: column;
@@ -109,22 +114,22 @@ export default {
   padding: 10px 0;
   box-sizing: border-box;
 }
-.info image{
+.info image {
   width: 43px;
   height: 43px;
   margin-bottom: 10px;
 }
-.info .text{
+.info .text {
   font-size: 14px;
   color: #666;
 }
-.shoplist{
+.shoplist {
   margin-top: 10px;
   border-top: 1px solid #ccc;
   background: #fff;
   box-sizing: border-box;
 }
-.shoplist_title{
+.shoplist_title {
   height: 30px;
   font-size: 12px;
   padding-left: 10px;
@@ -132,68 +137,68 @@ export default {
   color: #999;
   margin-bottom: 5px;
 }
-.shoplist ul{
+.shoplist ul {
 }
-.shop_li{
-  padding: 10px 10px;
+.shop_li {
+  padding: 14px 10px;
   display: flex;
   border-bottom: 1px solid #f1f1f1;
 }
-.pic image{
+.pic image {
   width: 60px;
   height: 60px;
 }
-.content{
+.content {
   flex: 1;
   display: flex;
   flex-direction: column;
   padding: 0 5px;
 }
-.content>div{
+.content > div {
   display: flex;
   /* justify-content: space-between; */
   /* align-items: flex-end; */
 }
-.content_title{
+.content_title {
   display: flex;
   justify-content: space-between;
 }
-.content_title p:first-child span:first-child{
+.content_title p:first-child span:first-child {
   background: #ffd930;
   font-size: 10px;
   font-weight: 600;
   margin-right: 5px;
   padding: 0 2px;
-} 
-.content_title p:first-child span:last-child{
+}
+.content_title p:first-child span:last-child {
   font-weight: bold;
   font-size: 14px;
-} 
-.content_title p:last-child{
+}
+.content_title p:last-child {
   font-size: 10px;
   color: #999;
 }
-.sales_status{
+.sales_status {
   margin-top: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 10px;
 }
-.sales_status>div{
+.sales_status > div {
   display: flex;
   color: #666;
 }
-.star{
+.star {
   font-size: 12px;
   color: darkorange;
 }
-.grade{
+.grade {
   font-size: 12px;
   color: orangered;
   margin: 0 4px;
 }
-.tags span{
+.tags span {
   border: solid 1px #3190e8;
   margin: 0 1px;
   font-size: 9px;
@@ -201,11 +206,11 @@ export default {
   color: #3190e8;
   border-radius: 2px;
 }
-.tags span:first-child{
+.tags span:first-child {
   color: #fff;
   background: #3190e8;
 }
-.shop_item_info{
+.shop_item_info {
   margin-top: 8px;
   font-size: 10px;
   display: flex;

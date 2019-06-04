@@ -3,7 +3,8 @@
     "pages/index/main",
     "pages/find/main",
     "pages/order/main",
-    "pages/my/main"
+    "pages/my/main",
+    "pages/shopDetail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
