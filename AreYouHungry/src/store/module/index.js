@@ -18,7 +18,7 @@ const actions = {
   },
   async getShopList ({ commit }) {
     let data = await getShopList()
-    commit('updataState', { shopList: data })
+    commit('updataState',{shopList:data})
   }
 }
 
