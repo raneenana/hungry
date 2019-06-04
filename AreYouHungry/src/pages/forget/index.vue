@@ -1,21 +1,21 @@
 <template>
-  <div class="wrap">
+  <div class="wrap_forget">
     <div class="all">
       <ul class="f_input">
         <li>
           <input placeholder="账号" v-model="value1"/>
         </li>
         <li>
-          <input placeholder="密码" v-model="value2"/>
-          <div>
-            <view class="section section_gap">
-              <view class="section__title"></view>
-              <switch name="switch"/>
-            </view>
-          </div>
+          <input placeholder="旧密码" v-model="value2"/>
         </li>
         <li>
-          <input placeholder="验证码" v-model="value3"/>
+          <input placeholder="请输入新密码" v-model="value3"/>
+        </li>
+        <li>
+          <input placeholder="请确认密码" v-model="value4"/>
+        </li>
+        <li>
+          <input placeholder="验证码" v-model="value5"/>
           <div>
             <img :src='img' alt mode='widthFix'/>
             <div class="word" @click="changeImg()">
@@ -25,14 +25,7 @@
           </div>
         </li>
       </ul>
-      <p>
-        温馨提示：未注册过的账号，登录时将自动注册
-      </p>
-      <p>
-        注册过的用户可凭账号密码登录
-      </p>
-      <div class="login" @click="login()">登录</div>
-      <p class="rest" @click="forget()"><span></span>重置密码?</p>
+      <div class="login" @click="sure()">确认修改</div>
     </div>
   </div>
 </template>
@@ -45,28 +38,27 @@ export default {
       img: '',
       value1: '',
       value2: '',
-      value3: ''
+      value3: '',
+      value4: '',
+      value5: ''
     }
   },
   async created () {
     this.img = await this.getCodes()
-    await this.getInfo()
   },
-  mounted(){
-    console.log(this.value1)
-  },
-  methods: {
+  methods:{
     ...mapActions({
-      Login: 'Login/Login',
-      getInfo: 'Login/getInfo',
-      getCodes: 'Login/getCodes'
+      // Login: 'Login/Login',
+      // getInfo: 'Login/getInfo',
+      getCodes: 'Login/getCodes',
+      updataPassword: 'Login/updataPassword'
     }),
     async changeImg () {
       this.img = await this.getCodes()
       console.log(this.img)
     },
-    login () {
-     if (this.value1 === ''&& this.value2 === ''&& this.value3 === '') {
+    sure () {
+      if (this.value1 === ''&& this.value2 === ''&& this.value3 === '') {
        wx.showModal({
         title: '提示',
         content: '请输入手机号/邮箱/用户名',
@@ -79,24 +71,21 @@ export default {
         }
       })
      } else {
-       this.Login({
-         username: this.value1,
-         password: this.value2,
-         captcha_code: this.value3
-       })
-     }
-    },
-    forget () {
-      wx.navigateTo({
-        url: '/pages/forget/main'
-      })
+        this.updataPassword({
+          username: this.value1,
+          oldpassWord: this.value2,
+          newpassword: this.value3,
+          confirmpassword: this.value4,
+          captcha_code: this.value5
+        })
+      }
     }
   }
 }
 </script>
 
 <style scoped>
-.wrap{
+.wrap_forget{
   width: 100%;
   height: 100%;
   background: #f5f5f5;
@@ -154,14 +143,5 @@ export default {
 }
 .cl_blue{
   color: #3b95e9;
-}
-.rest{
-  width: 100%;
-  display: flex;
-  padding: 20rpx;
-  justify-content: space-around;
-}
-.rest span{
-  width: 50%;
 }
 </style>

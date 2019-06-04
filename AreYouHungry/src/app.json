@@ -4,7 +4,8 @@
     "pages/order/main",
     "pages/find/main",
     "pages/login/main",
-    "pages/my/main"
+    "pages/my/main",
+    "pages/forget/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
