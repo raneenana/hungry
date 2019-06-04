@@ -55,7 +55,7 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       imgSrc: 'https://fuss10.elemecdn.com',
       picSrc: 'https://elm.cangdu.org/img/',
@@ -74,16 +74,16 @@ export default {
       getFoodList: 'index/getcateList',
       getShopList: 'index/getShopList'
     }),
-    goDetail(v){
+    goDetail (v) {
       wx.navigateTo({
-        url: '../typeDetail/main?title='+v.title
+        url: '../typeDetail/main?title=' + v.title
       })
     }
   },
-  async mounted() {
+  async mounted () {
     await this.getFoodList()
     await this.getShopList()
-    this.first = this.foodList.slice(0,8)
+    this.first = this.foodList.slice(0, 8)
     this.seconed = this.foodList.slice(8)
   }
 }
