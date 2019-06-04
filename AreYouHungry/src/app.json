@@ -5,7 +5,9 @@
     "pages/find/main",
     "pages/login/main",
     "pages/my/main",
-    "pages/forget/main"
+    "pages/forget/main",
+    "pages/server/main",
+    "pages/download/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

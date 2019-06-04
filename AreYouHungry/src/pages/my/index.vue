@@ -57,7 +57,7 @@
     </div>
     <div class="server">
       <ul>
-        <li v-for='(item, index) in serList' :key="index">
+        <li v-for='(item, index) in serList' :key="index" @click="inSever(index)">
           <div class="left">
             <img :src="item.img" alt mode="widthFix"/>
             <p>{{item.content}}</p>
@@ -105,6 +105,17 @@ export default {
       if (index === 0) {
         wx.switchTab({
           url: '/pages/order/main'
+        })
+      }
+    },
+    inSever (index) {
+      if (index === 0) {
+        wx.navigateTo({
+          url: '/pages/server/main'
+        })
+      } else if (index === 1) {
+        wx.navigateTo({
+          url: '/pages/download/main'
         })
       }
     }
