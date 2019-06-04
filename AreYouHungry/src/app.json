@@ -5,7 +5,8 @@
     "pages/find/main",
     "pages/login/main",
     "pages/my/main",
-    "pages/typeDetail/main"
+    "pages/typeDetail/main",
+    "pages/forget/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

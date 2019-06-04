@@ -16,3 +16,19 @@ export let find = data => {
     url: `https://elm.cangdu.org/v4/restaurants?extras[]=restaurant_activity&geohash=31.22299,121.36025&keyword=${data}&type=search`
   })
 }
+// 获取用户信息
+export let getUseInfo = () => {
+  return request.get('https://elm.cangdu.org/v1/user')
+}
+// 获取验证码
+export let getCode = () => {
+  return request.post('https://elm.cangdu.org/v1/captchas')
+}
+// 登录
+export let login = params => {
+  return request.post('https://elm.cangdu.org/v2/login')
+}
+// 修改密码
+export let password = params => {
+  return request.post('https://elm.cangdu.org/v2/changepassword')
+}
