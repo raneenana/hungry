@@ -2,16 +2,15 @@
   <view class="wrap">
     <swiper class="swiper lists" indicator-dots="true">
       <swiper-item class="info">
-        <div v-for="(item, index) in first" :index="index" :key="key" @click='goDetail(item)'>
+        <div v-for="(item, index) in first" :index="index" :key="index" @click='goDetail(item)'>
           <image :src="imgSrc+item.image_url" class="slide-image" mode="aspectFill"/>
           <view class="text">{{item.title}}</view>
         </div>
       </swiper-item>
       <swiper-item class="info">
-          <div v-for="(item, index) in seconed" :index="index" :key="key" @click='goDetail(item)'>
+          <div v-for="(item, index) in seconed" :index="index" :key="index" @click='goDetail(item)'>
             <image :src="imgSrc+item.image_url" class="slide-image" mode="aspectFill"/>
             <view class="text">{{item.title}}</view>
-
         </div>
       </swiper-item>
     </swiper>
