@@ -3,7 +3,6 @@ const state = {
   shopList: [],
   foodList: []
 }
-
 const mutations = {
   updataState (state, payload) {
     for (var key in payload) {

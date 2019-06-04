@@ -10,8 +10,13 @@
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
+<<<<<<< HEAD
 	"appid": "wx23f9054a15947295",
 	"projectname": "AreYouHungry",
+=======
+	"appid": "wx59963d867c9230cc",
+	"projectname": "hungry",
+>>>>>>> 453bd3985859dacac65a80c9400b5270f2755e84
 	"condition": {
 		"search": {
 			"current": -1,
@@ -30,12 +35,32 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/main",
+					"query": "",
+					"scene": null
+				},
+        {
+          "id": -1,
 					"name": "find",
 					"pathName": "pages/find/main",
+          "scene": null
+        },
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "type",
+					"pathName": "pages/typeDetail/main",
 					"scene": null
 				}
 			]

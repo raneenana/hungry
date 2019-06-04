@@ -2,52 +2,53 @@
   <view class="wrap">
     <swiper class="swiper lists" indicator-dots="true">
       <swiper-item class="info">
-        <div v-for="(item, index) in first" :index="index" :key="key">
+        <div v-for="(item, index) in first" :index="index" :key="key" @click='goDetail(item)'>
           <image :src="imgSrc+item.image_url" class="slide-image" mode="aspectFill"/>
           <view class="text">{{item.title}}</view>
         </div>
       </swiper-item>
       <swiper-item class="info">
-          <div v-for="(item, index) in seconed" :index="index" :key="key">
+          <div v-for="(item, index) in seconed" :index="index" :key="key" @click='goDetail(item)'>
             <image :src="imgSrc+item.image_url" class="slide-image" mode="aspectFill"/>
             <view class="text">{{item.title}}</view>
+
         </div>
       </swiper-item>
     </swiper>
     <div class="shoplist"> 
-        <h5 class="shoplist_title">附近商家</h5>
-        <ul>
-          <li class="shop_li"  v-for="(item,index) in shopList" :key='index' @click="goDetail(item.id)">
-            <div class="pic">
-              <image :src="picSrc+item.image_path" />
+      <h5 class="shoplist_title">附近商家</h5>
+      <ul>
+        <li class="shop_li"  v-for="(item,index) in shopList" :key='index' @click='goShopDetail(item.id)'>
+          <div class="pic">
+            <image :src="picSrc+item.image_path" />
+          </div>
+          <div class="content">
+            <div class="content_title">
+              <p>
+                <span>品牌</span>
+                <span>{{item.name}}</span>
+              </p>  
+              <p>保 准 票</p>
             </div>
-            <div class="content">
-              <div class="content_title">
-                <p>
-                  <span>品牌</span>
-                  <span>{{item.name}}</span>
-                </p>  
-                <p>保 准 票</p>
+            <div class="sales_status">
+              <div>
+                <span class="star">★★★★★</span> 
+                <span class="grade">{{item.rating}}</span>
+                <span class="scale">月售{{item.recent_order_num}}单</span>
               </div>
-              <div class="sales_status">
-                <div>
-                  <span class="star">★★★★★</span> 
-                  <span class="grade">{{item.rating}}</span>
-                  <span class="scale">月售{{item.recent_order_num}}单</span>
-                </div>
-                <div class="tags">
-                  <span>蜂鸟专送</span>
-                  <span>准时达</span>
-                </div>
-              </div>
-              <div class="shop_item_info">
-                <div>￥{{item.float_minimum_order_amount}}起送 / {{item.piecewise_agent_fee&&item.piecewise_agent_fee.tips}}</div>
-                <div><span style="color:#999">{{item.distance}}</span> / <span style="color: #3190e8">{{item.order_lead_time}}</span></div>
+              <div class="tags">
+                <span>蜂鸟专送</span>
+                <span>准时达</span>
               </div>
             </div>
-          </li>
-        </ul>
-      </div> 
+            <div class="shop_item_info">
+              <div>￥{{item.float_minimum_order_amount}}起送 / {{item.piecewise_agent_fee&&item.piecewise_agent_fee.tips}}</div>
+              <div><span style="color:#999">{{item.distance}}</span> / <span style="color: #3190e8">{{item.order_lead_time}}</span></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </view>
 </template>
 
@@ -73,9 +74,14 @@ export default {
       getFoodList: 'index/getcateList',
       getShopList: 'index/getShopList'
     }),
-    goDetail (id) {
+    goShopDetail (id) {
       wx.navigateTo({
         url: '../shopDetail/main?id=' + id
+      })
+    },
+    goDetail (v) {
+      wx.navigateTo({
+        url: '../typeDetail/main?title=' + v.title
       })
     }
   },
