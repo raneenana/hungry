@@ -43,8 +43,8 @@
 					"id": -1,
 					"name": "find",
 					"pathName": "pages/find/main",
-					"scene": null
-				},
+          "scene": null
+        },
 				{
 					"id": -1,
 					"name": "登录",

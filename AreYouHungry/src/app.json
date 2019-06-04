@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/main",
     "pages/order/main",
+    "pages/my/main",
+    "pages/shopDetail/main",
     "pages/find/main",
     "pages/login/main",
     "pages/my/main",

@@ -9,6 +9,14 @@ export let getCateList = params => {
 export let getShopList = params => {
   return request.get('https://elm.cangdu.org/shopping/restaurants?latitude=31.22299&longitude=121.36025&offset=0&limit=20&extras[]=activities&keyword=&restaurant_category_id=&restaurant_category_ids[]=&order_by=&delivery_mode[]=')
 }
+// 餐馆详情
+export let getShopDetail = params => {
+  return request.get('https://elm.cangdu.org/shopping/restaurant/' + params)
+}
+// 获取食品列表
+export let getMenuDetail = params => {
+  return request.get('https://elm.cangdu.org/shopping/v2/menu?restaurant_id=' + params)
+}
 // 获取搜索的结果
 export let find = data => {
   // console.log(data)
