@@ -6,7 +6,6 @@
     "pages/shopDetail/main",
     "pages/find/main",
     "pages/login/main",
-    "pages/my/main",
     "pages/typeDetail/main",
     "pages/forget/main"
   ],
