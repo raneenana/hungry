@@ -5,6 +5,7 @@
     "pages/find/main",
     "pages/login/main",
     "pages/my/main",
+    "pages/shopDetail/main",
     "pages/typeDetail/main"
   ],
   "window": {

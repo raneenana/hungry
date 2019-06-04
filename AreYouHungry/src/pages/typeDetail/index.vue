@@ -3,7 +3,7 @@
     <div class="shoplist">
       <h5 class="shoplist_title">附近商家</h5>
       <ul>
-        <li class="shop_li" v-for="(item,index) in shopList" :key='index'>
+        <li class="shop_li" v-for="(item,index) in shopList" :key='index' @click='goListDetail(item.id)'>
           <div class="pic">
             <image :src="picSrc+item.image_path" />
           </div>
@@ -55,7 +55,12 @@
     methods: {
       ...mapActions({
         getShopList: 'index/getShopList'
-      })
+      }),
+      goListDetail(id){
+        wx.navigateTo({
+          url: '../shopDetail/main?id='+id
+        })
+      }
     },
     async mounted() {
       let tit = this.$root.$mp.query.title
