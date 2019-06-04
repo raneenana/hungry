@@ -1,7 +1,7 @@
 import { find } from '../../api/index'
 const state = {
   historyList: [],
-  findList: {}
+  findList: null
 }
 const mutations = {
   CHANGE_LIST: (state, payload) => {
@@ -15,6 +15,7 @@ const actions = {
   async getHistory ({ commit }, payload) {
     let data = await find(payload)
     commit('CHANGE_LIST', {tit: payload, data: data})
+    // return data
   }
 }
 

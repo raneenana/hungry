@@ -7,13 +7,28 @@
     <div class="history">
       <div class="title">搜索历史</div>
       <ul>
-        <li v-for="(item,index) in historyList" :key="index">
+        <li @click="submit(item)" v-for="(item,index) in historyList" :key="index">
           <span>{{item}}</span>
           <b @click="del(index)">X</b>
         </li>
       </ul>
       <div v-if="flag" class="section">
-        <p>{{this.dataList || flag ? '很抱歉！无搜索结果' : ''}}</p>
+        <p :class=" data.length ? 'active' : ''">很抱歉，没有搜索结果</p>
+        <div :class=" data.length ? 'main_list' : 'active_main'">
+          <h4>商家</h4>
+          <ul class="list">
+            <li v-for="(item,index) in data" :key="index">
+              <div class="left">
+                <img :src="'https://elm.cangdu.org/img/'+item.image_path" alt="">
+              </div>
+              <div class="right">
+                <p>{{item.name}}</p>
+                <p>月售{{item.recent_order_num}}单</p>
+                <p>{{item.float_minimum_order_amount}}起送/距离{{item.distance}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -27,7 +42,7 @@ export default {
       flag: false,
       val: '',
       historyList: [],
-      dataList: {}
+      num: 0
     }
   },
   computed: {
@@ -38,7 +53,6 @@ export default {
   },
   created () {
     this.historyList = this.list
-    this.dataList = this.data
   },
 
   methods: {
@@ -46,11 +60,17 @@ export default {
       history: 'Find/getHistory'
       // dele: 'Find/delete',
     }),
-    submit () {
-      if (this.val) {
-        this.history(this.val)
-        this.flag = !this.flag
+    async submit (item) {
+      if (!item) {
+        if (this.val) {
+          await this.history(this.val)
+          this.dataList = this.data
+        }
+      } else {
+        await this.history(item)
+        this.dataList = this.data
       }
+      this.flag = !this.flag
     },
     changeVal (e) {
       if (!this.val) {
@@ -81,11 +101,11 @@ export default {
   justify-content: flex-start;
 }
 .head input {
-  width: 260px;
+  width: 250px;
   height: 36px;
-  padding-left: 10px;
+  padding: 0 5px;
   margin-top: 12px;
-  margin-left: 15px;
+  margin-left: 10px;
   margin-right: 5px;
   background: #f5f5f5;
   border-radius: 5px;
@@ -139,12 +159,65 @@ li span,b{
   overflow: hidden;
   background: #f5f5f5;
 }
-.section p {
+.section>p {
   width: 100%;
   height: 30px;
+  display: block;
   text-align: center;
   line-height: 30px;
   background: #fff;
   margin-top: 5px;
+}
+.section .active {
+  display: none;
+}
+.main_list {
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5;
+  overflow-y: scroll
+}
+.main_list h4 {
+  font-size: 16px;
+  line-height: 40px;
+  text-indent: 10px;
+  font-weight: 700;
+  color: #666;
+}
+.main_list .list {
+  width: 100%;
+}
+.main_list .list li {
+  width: 100%;
+  height: 70px;
+  padding: 10px;
+  background: #fff;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+.main_list .list li .left{
+  width: 40px;
+  height: 100%;
+}
+.main_list .list li .left img{
+  width: 40px;
+  height: 40px;
+}
+.main_list .list li .right{
+  flex: 1;
+  height: 100%;
+}
+.main_list .list li .right p{
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+.main_list .list li .right p:last-child {
+  border-bottom: 1px solid #ccc;
+}
+.active_main {
+  display: none;
 }
 </style>
