@@ -7,7 +7,9 @@
     "pages/find/main",
     "pages/login/main",
     "pages/typeDetail/main",
-    "pages/forget/main"
+    "pages/forget/main",
+    "pages/points/main",
+    "pages/pointDetail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
