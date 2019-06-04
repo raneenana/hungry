@@ -4,12 +4,13 @@
     "pages/order/main",
     "pages/find/main",
     "pages/login/main",
-    "pages/my/main"
+    "pages/my/main",
+    "pages/typeDetail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "饿了吗",
+    "navigationBarTitleText": "饿了么",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

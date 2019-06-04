@@ -43,12 +43,22 @@
           "id": -1,
 					"name": "find",
 					"pathName": "pages/find/main",
+<<<<<<< HEAD
           "scene": null
         },
 				{
 					"id": -1,
 					"name": "登录",
 					"pathName": "pages/login/main",
+=======
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "type",
+					"pathName": "pages/typeDetail/main",
+>>>>>>> zhangna
 					"scene": null
 				}
 			]
